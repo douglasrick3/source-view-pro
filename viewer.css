@@ -1,0 +1,230 @@
+/* Source View Pro — estilos (cores baseadas nos temas Dark+ e Light+ do VS Code) */
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("fonts/SourceCodePro-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: block;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("fonts/SourceCodePro-ext-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: block;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("fonts/SourceCodePro-400i.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: block;
+}
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("fonts/SourceCodePro-600.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: block;
+}
+
+/* ---------- Tema escuro (Dark+) ---------- */
+:root, :root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1e1e1e;
+  --fg: #d4d4d4;
+  --gutter-bg: #1e1e1e;
+  --gutter-fg: #858585;
+  --gutter-active: #c6c6c6;
+  --line-hl: #2a2d2e;
+  --line-target: #264f78;
+  --selection: #264f78;
+  --bar-bg: #252526;
+  --bar-fg: #cccccc;
+  --bar-border: #3c3c3c;
+  --btn-bg: #3c3c3c;
+  --btn-hover: #4a4a4a;
+  --btn-active: #0e639c;
+  --btn-active-fg: #ffffff;
+  --indent-guide: #404040;
+
+  --t-punct: #808080;      /* < > </ /> = */
+  --t-tag: #569cd6;        /* nome da tag */
+  --t-attr: #9cdcfe;       /* nome do atributo */
+  --t-value: #ce9178;      /* valor do atributo / strings */
+  --t-comment: #6a9955;
+  --t-doctype: #569cd6;
+  --t-entity: #569cd6;
+  --t-text: #d4d4d4;
+  --t-keyword: #569cd6;    /* const, function, true */
+  --t-control: #c586c0;    /* if, return, import, @media */
+  --t-func: #dcdcaa;
+  --t-var: #9cdcfe;
+  --t-type: #4ec9b0;
+  --t-number: #b5cea8;
+  --t-regex: #d16969;
+  --t-selector: #d7ba7d;
+  --t-prop: #9cdcfe;
+  --t-cssval: #ce9178;
+}
+
+/* ---------- Tema claro (Light+) ---------- */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --fg: #000000;
+  --gutter-bg: #ffffff;
+  --gutter-fg: #237893;
+  --gutter-active: #0b216f;
+  --line-hl: #f3f3f3;
+  --line-target: #add6ff;
+  --selection: #add6ff;
+  --bar-bg: #f3f3f3;
+  --bar-fg: #333333;
+  --bar-border: #e0e0e0;
+  --btn-bg: #e4e4e4;
+  --btn-hover: #d6d6d6;
+  --btn-active: #005fb8;
+  --btn-active-fg: #ffffff;
+  --indent-guide: #e3e3e3;
+
+  --t-punct: #800000;
+  --t-tag: #800000;
+  --t-attr: #e50000;
+  --t-value: #0000ff;
+  --t-comment: #008000;
+  --t-doctype: #800000;
+  --t-entity: #ff0000;
+  --t-text: #000000;
+  --t-keyword: #0000ff;
+  --t-control: #af00db;
+  --t-func: #795e26;
+  --t-var: #001080;
+  --t-type: #267f99;
+  --t-number: #098658;
+  --t-regex: #811f3f;
+  --t-selector: #800000;
+  --t-prop: #e50000;
+  --t-cssval: #0451a5;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-family: "Source Code Pro", Consolas, "Courier New", monospace;
+  font-size: var(--fs, 14px);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--selection); }
+
+/* ---------- Barra superior ---------- */
+.bar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 6px 12px;
+  background: var(--bar-bg);
+  color: var(--bar-fg);
+  border-bottom: 1px solid var(--bar-border);
+  font: 12px/1.4 "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+.bar .url {
+  flex: 1 1 260px; min-width: 0;
+  font-family: "Source Code Pro", monospace; font-size: 12px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  opacity: .9;
+}
+.bar .url b { color: var(--t-tag); font-weight: 600; }
+.bar .meta { opacity: .65; white-space: nowrap; }
+.bar .group { display: inline-flex; gap: 2px; }
+.bar button, .bar label.chk {
+  font: inherit; color: var(--bar-fg);
+  background: var(--btn-bg); border: 0; border-radius: 4px;
+  padding: 4px 9px; cursor: pointer; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.bar button:hover, .bar label.chk:hover { background: var(--btn-hover); }
+.bar button[aria-pressed="true"] { background: var(--btn-active); color: var(--btn-active-fg); }
+.bar .group button { border-radius: 0; }
+.bar .group button:first-child { border-radius: 4px 0 0 4px; }
+.bar .group button:last-child { border-radius: 0 4px 4px 0; }
+.bar label.chk input { margin: 0; accent-color: var(--btn-active); }
+
+/* ---------- Código ---------- */
+#code {
+  padding: 8px 0 40vh;
+  min-width: max-content;
+}
+.wrap #code { min-width: 0; }
+
+.l {
+  display: flex;
+  min-height: 1.55em;
+}
+.l:hover { background: var(--line-hl); }
+.l.target { background: var(--line-target); }
+
+.n {
+  flex: 0 0 auto;
+  width: calc(var(--digits, 4) * 1ch + 28px);
+  padding-right: 18px;
+  text-align: right;
+  color: var(--gutter-fg);
+  background: var(--gutter-bg);
+  user-select: none;
+  cursor: pointer;
+  position: sticky; left: 0;
+}
+.l:hover .n, .l.target .n { color: var(--gutter-active); background: inherit; }
+.n::before { content: attr(data-n); }
+
+.c {
+  flex: 1 1 auto;
+  white-space: pre;
+  padding-right: 24px;
+  tab-size: 4;
+}
+.wrap .c { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* ---------- Tokens ---------- */
+.p   { color: var(--t-punct); }
+.tg  { color: var(--t-tag); }
+.at  { color: var(--t-attr); }
+.v   { color: var(--t-value); }
+.cm  { color: var(--t-comment); font-style: italic; }
+.dt  { color: var(--t-doctype); }
+.en  { color: var(--t-entity); }
+.tx  { color: var(--t-text); }
+.kw  { color: var(--t-keyword); }
+.ct  { color: var(--t-control); }
+.fn  { color: var(--t-func); }
+.vr  { color: var(--t-var); }
+.ty  { color: var(--t-type); }
+.nu  { color: var(--t-number); }
+.rx  { color: var(--t-regex); }
+.sel { color: var(--t-selector); }
+.pr  { color: var(--t-prop); }
+.cv  { color: var(--t-cssval); }
+
+a.lk { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); text-underline-offset: 2px; }
+a.lk:hover { text-decoration-color: currentColor; }
+
+/* ---------- Estados ---------- */
+.msg {
+  padding: 48px 24px; max-width: 720px; margin: 0 auto;
+  font: 14px/1.6 "Segoe UI", system-ui, sans-serif;
+}
+.msg h1 { font-size: 18px; margin: 0 0 8px; }
+.msg code { font-family: "Source Code Pro", monospace; color: var(--t-value); }
+
+.toast {
+  position: fixed; bottom: 20px; right: 20px; z-index: 20;
+  background: var(--btn-active); color: var(--btn-active-fg);
+  padding: 8px 14px; border-radius: 6px;
+  font: 13px "Segoe UI", system-ui, sans-serif;
+  opacity: 0; transform: translateY(8px); transition: .2s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: none; }

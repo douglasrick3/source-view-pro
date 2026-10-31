@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Source View Pro",
+  "short_name": "Source View",
+  "version": "1.0.0",
+  "description": "Substitui o view-source: do Chrome por um visualizador com cores no estilo Visual Studio Code, temas claro/escuro e fonte Source Code Pro.",
+  "author": "Douglas Rick — Criartweb",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Ver código-fonte desta página (Source View Pro)",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "commands": {
+    "open-source-view": {
+      "suggested_key": {
+        "default": "Alt+Shift+U",
+        "mac": "Alt+Shift+U"
+      },
+      "description": "Abrir o código-fonte da aba atual"
+    }
+  },
+  "permissions": ["tabs", "storage", "contextMenus"],
+  "host_permissions": ["<all_urls>"]
+}

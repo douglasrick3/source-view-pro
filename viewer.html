@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Código-fonte</title>
+  <link rel="icon" href="icons/icon32.png">
+  <link rel="preload" href="fonts/SourceCodePro-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="viewer.css">
+  <script src="theme-boot.js"></script>
+</head>
+<body>
+  <header class="bar">
+    <div class="url" id="url" title=""></div>
+    <span class="meta" id="meta"></span>
+
+    <div class="group" role="group" aria-label="Tema">
+      <button type="button" data-theme-btn="dark" title="Tema escuro (Dark+)">Escuro</button>
+      <button type="button" data-theme-btn="light" title="Tema claro (Light+)">Claro</button>
+      <button type="button" data-theme-btn="auto" title="Seguir o tema do sistema">Auto</button>
+    </div>
+
+    <div class="group" role="group" aria-label="Tamanho da fonte">
+      <button type="button" id="fsDown" title="Diminuir fonte (Ctrl -)">A−</button>
+      <button type="button" id="fsUp" title="Aumentar fonte (Ctrl +)">A+</button>
+    </div>
+
+    <button type="button" id="wrapBtn" aria-pressed="false" title="Quebra de linha (Alt+Z)">Quebrar linhas</button>
+    <button type="button" id="copyBtn" title="Copiar todo o código">Copiar</button>
+    <button type="button" id="openBtn" title="Abrir a página original">Abrir página</button>
+
+    <label class="chk" title="Quando ligado, todo view-source: abre neste visualizador">
+      <input type="checkbox" id="interceptChk"> Substituir view-source:
+    </label>
+  </header>
+
+  <main id="code" aria-label="Código-fonte"></main>
+  <div class="toast" id="toast"></div>
+
+  <script src="highlight.js"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>
